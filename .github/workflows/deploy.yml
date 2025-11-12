@@ -18,7 +18,12 @@ jobs:
         run: npm ci
 
       - name: Build & export
-        run: npm run build
+        env:
+          NEXT_PUBLIC_BASE_PATH: /dronegym
+        run: |
+          npm run build
+          # when using output: 'export' Next will write static files to out/
+          # nothing else required here
 
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v3
