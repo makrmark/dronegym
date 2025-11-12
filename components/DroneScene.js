@@ -25,15 +25,15 @@ function Drone({ leftControl, rightControl, cameraControl, onCameraPitchChange, 
     const r = rightControl || {x:0,y:0}
 
   // map joystick axes to controls
-  // Left joystick: x -> yaw rate, y -> altitude (joystick down -> positive y -> descend)
+  // Left joystick: x -> yaw rate, y -> altitude (joystick up -> positive y -> ascend)
   // reduced yaw rate to make rotations less sensitive
   const maxYawRate = 0.5 // rad/s (halved again from 1.0)
     const maxVertSpeed = 3.5 // m/s
 
   // invert yaw so left/right joystick direction matches user preference
   const yawInput = -(l.x || 0)
-  // invert left joystick Y so pushing forward/up (negative on some devices) results in ascending
-  const vertInput = -(l.y || 0)
+  // left joystick Y: pushing forward/up results in ascending
+  const vertInput = (l.y || 0)
 
   // Controls are inactive when on the ground (isFlying === false)
   const allowControl = !!isFlying
@@ -43,9 +43,8 @@ function Drone({ leftControl, rightControl, cameraControl, onCameraPitchChange, 
   s.yaw += yawRateCmd * dt
 
   // Right joystick: y -> forward/back, x -> right/left (in drone local frame)
-  // User prefers reversed mapping for right joystick axes — invert both axes here
   const maxHoriz = 4.0 // m/s
-  const forwardInput = -(r.y || 0)
+  const forwardInput = (r.y || 0)
   const rightInput = -(r.x || 0)
 
     // compute local forward and right vectors from yaw
