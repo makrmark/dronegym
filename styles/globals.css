@@ -1,0 +1,94 @@
+:root{--bg:#0f1720;--card:#0b1220;--accent:#1e90ff}
+.mission-page, .mission-page * {
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+html,body,#__next{height:100%; touch-action: none; -webkit-touch-callout: none; -webkit-tap-highlight-color: transparent; overscroll-behavior: none}
+body{margin:0;font-family:Inter,system-ui,Arial,sans-serif;background:linear-gradient(180deg,#071027,#0e1722);color:#e6eef6}
+.mission-page, .mission-page * {
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+.center{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100vh}
+.page{padding:24px;text-align:center}
+.mission-list{display:flex;gap:16px;justify-content:center}
+.mission-card{background:rgba(255,255,255,0.03);padding:16px;border-radius:8px;max-width:420px}
+.btn{background:var(--accent);border:none;color:#fff;padding:10px 14px;border-radius:6px;cursor:pointer}
+.btn.small{padding:6px 10px}
+
+.mission-page{height:100svh;display:flex;flex-direction:column}
+.topbar{display:flex;align-items:center;padding:12px}
+.scene-wrap{position:relative;flex:1;box-sizing:border-box}
+.scene-wrap canvas{touch-action:none;display:block;width:100%;height:100%}
+.hud{position:fixed;inset:0;pointer-events:none;z-index:100}
+.crosshair{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font-size:44px;color:rgba(255,255,255,0.9);pointer-events:none}
+.joystick-left{position:absolute;left:12px;bottom:calc(env(safe-area-inset-bottom, 0px) + 12px);pointer-events:auto;display:flex;flex-direction:column;align-items:center;z-index:110}
+.joystick-right{position:absolute;right:12px;bottom:calc(env(safe-area-inset-bottom, 0px) + 12px);pointer-events:auto;display:flex;flex-direction:column;align-items:center;z-index:110}
+.joystick-left,.joystick-right,.joystick-camera,.takeoff-left,.flightmode-right{touch-action:none;-webkit-tap-highlight-color:transparent}
+.joystick-box{display:flex;flex-direction:column;align-items:center}
+.label{font-size:12px;opacity:0.9;margin-bottom:6px}
+.action-buttons{display:flex;align-items:center}
+.takeoff{background:#2ecc71}
+.land{background:#e74c3c}
+
+/* takeoff/land button on left center */
+.takeoff-left{position:absolute;left:12px;top:50%;transform:translateY(-50%);pointer-events:auto}
+
+/* flight mode toggle on right center (mirrors takeoff-left) */
+.flightmode-right{position:absolute;right:12px;top:50%;transform:translateY(-50%);pointer-events:auto}
+
+/* Ensure joystick-box doesn't stretch and maintains square area */
+.joystick-box > div{display:flex;align-items:center;justify-content:center}
+
+/* camera joystick (rectangular) on the left side, below header to avoid Back overlap */
+	.joystick-camera{position:absolute;left:12px;top:calc(env(safe-area-inset-top, 12px) + 56px);pointer-events:auto;display:flex;flex-direction:column;align-items:center;z-index:110}
+
+/* move telemetry HUD to top-right but slightly inset so joystick can occupy corner */
+.telemetry.hud-panel{
+	position:fixed;
+	right:12px;
+	top:12px;
+	left:auto;
+	background:rgba(0,0,0,0.5);
+	padding:8px 10px;
+	border-radius:8px;
+	font-size:13px;
+	line-height:1.4;
+	width:auto;
+	pointer-events:auto;
+	z-index:220;
+	}
+
+/* Telemetry HUD fallback/generic (avoid matching .telemetry.hud-panel) */
+.hud-panel{background:rgba(0,0,0,0.5);padding:8px 10px;border-radius:8px;font-size:13px;line-height:1.4}
+
+/* keyboard hints bubble */
+.keyboard-hints{
+	position: absolute;
+	left: 50%;
+	bottom: 12px;
+	transform: translateX(-50%);
+	background: rgba(0,0,0,0.75);
+	color: #fff;
+	padding: 10px 12px;
+	border-radius: 8px;
+	font-size: 13px;
+	pointer-events: auto;
+	max-width: 92%;
+	box-shadow: 0 6px 18px rgba(0,0,0,0.4);
+}
+
+.keyboard-hints .btn.small{padding:6px 8px}
+
+/* Landscape tweaks for panorama mode on phones */
+@media (orientation: landscape) {
+	.joystick-left{left:18px;bottom:18px}
+	.joystick-right{right:18px;bottom:18px}
+	.joystick-camera{left:18px;top:calc(18px + 56px)}
+	.crosshair{font-size:40px}
+}
+

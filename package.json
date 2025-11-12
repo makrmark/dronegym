@@ -1,0 +1,22 @@
+{
+  "name": "dronesim",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build && next export",
+    "start": "next start",
+    "deploy": "gh-pages -d out"
+  },
+  "dependencies": {
+    "@react-three/drei": "^9.122.0",
+    "@react-three/fiber": "8.13.0",
+    "next": "^16.0.1",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "three": "0.160.0"
+  },
+  "devDependencies": {
+    "gh-pages": "^5.0.0"
+  }
+}
