@@ -6,6 +6,9 @@ const nextConfig = {
   reactStrictMode: true,
   // Make sure next export works
   output: 'export',
+  // replace 'repo' with your repository name
+  basePath: '/repo',
+  assetPrefix: '/repo/',
 }
 
 module.exports = nextConfig;
