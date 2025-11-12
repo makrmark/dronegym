@@ -1,19 +1,19 @@
 self.__BUILD_MANIFEST = {
   "/": [
-    "static/chunks/a8df10a1c336d1ea.js"
+    "static/chunks/1a6d5c63187ecec8.js"
   ],
   "/_error": [
-    "static/chunks/f7661533cc730d83.js"
+    "static/chunks/524650577f570776.js"
   ],
   "/mission/[id]": [
-    "static/chunks/7f729da894400b48.js"
+    "static/chunks/b00fc604bb74a52f.js"
   ],
   "__rewrites": {
     "afterFiles": [],
     "beforeFiles": [
       {
-        "source": "/repo//_next/:path+",
-        "destination": "/repo/_next/:path+"
+        "source": "/dronegym//_next/:path+",
+        "destination": "/dronegym/_next/:path+"
       }
     ],
     "fallback": []
