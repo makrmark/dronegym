@@ -7,8 +7,8 @@ const nextConfig = {
   // Make sure next export works
   output: 'export',
   // replace 'repo' with your repository name
-  basePath: '/repo',
-  assetPrefix: '/repo/',
+  basePath: '/dronegym',
+  assetPrefix: '/dronegym/',
 }
 
 module.exports = nextConfig;
