@@ -26,8 +26,8 @@ body{margin:0;font-family:Inter,system-ui,Arial,sans-serif;background:linear-gra
 .scene-wrap canvas{touch-action:none;display:block;width:100%;height:100%}
 .hud{position:fixed;inset:0;pointer-events:none;z-index:100}
 .crosshair{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font-size:44px;color:rgba(255,255,255,0.9);pointer-events:none}
-.joystick-left{position:absolute;left:12px;bottom:calc(env(safe-area-inset-bottom, 0px) + 12px);pointer-events:auto;display:flex;flex-direction:column;align-items:center;z-index:110}
-.joystick-right{position:absolute;right:12px;bottom:calc(env(safe-area-inset-bottom, 0px) + 12px);pointer-events:auto;display:flex;flex-direction:column;align-items:center;z-index:110}
+.joystick-left{position:absolute;left:32px;bottom:calc(env(safe-area-inset-bottom, 0px) + 12px);pointer-events:auto;display:flex;flex-direction:column;align-items:center;z-index:110}
+.joystick-right{position:absolute;right:32px;bottom:calc(env(safe-area-inset-bottom, 0px) + 12px);pointer-events:auto;display:flex;flex-direction:column;align-items:center;z-index:110}
 .joystick-left,.joystick-right,.joystick-camera,.takeoff-left,.flightmode-right{touch-action:none;-webkit-tap-highlight-color:transparent}
 .joystick-box{display:flex;flex-direction:column;align-items:center}
 .label{font-size:12px;opacity:0.9;margin-bottom:6px}
@@ -43,6 +43,44 @@ body{margin:0;font-family:Inter,system-ui,Arial,sans-serif;background:linear-gra
 
 /* Ensure joystick-box doesn't stretch and maintains square area */
 .joystick-box > div{display:flex;align-items:center;justify-content:center}
+
+/* Rectangular joystick track for gimbal (left/right only) */
+.joystick-zone.rect{overflow:visible}
+.joystick-track{
+	position:absolute;
+	/* make the racetrack wider than the joystick knob so it encloses it fully */
+			left:-8px;
+			right:-8px;
+	top:50%;
+	transform:translateY(-50%);
+	height:44px; /* increased height to enclose the knob */
+	background:rgba(255,255,255,0.08);
+	border-radius:999px;
+	box-shadow: inset 0 1px 0 rgba(255,255,255,0.04);
+	pointer-events:none;
+}
+
+/* When in rectangular mode, hide the circular base that nipplejs draws so only
+	 the small movable knob is visible on top of the racetrack. Keep the knob
+	 itself visible (nipple element). Add robust selectors to cover variants. */
+.joystick-zone.rect .nipple-base,
+.joystick-zone.rect .nipple-bg,
+.joystick-zone.rect .nipple-bkg,
+.joystick-zone.rect .nipple-background {
+	display:none !important;
+	opacity:0 !important;
+	box-shadow:none !important;
+	background:transparent !important;
+	pointer-events:none !important;
+}
+.joystick-zone .nipple{z-index:3}
+.joystick-zone .nipple-base{z-index:2}
+
+/* Nipple.js uses .back and .front elements; hide the large circular back for
+	 rectangular gimbals and constrain the visible front (knob) size if needed. */
+.joystick-zone.rect .nipple .back{display:none !important;opacity:0 !important}
+.joystick-zone.rect .nipple .front{opacity:1 !important}
+.joystick-zone.rect .nipple .front{width:36px !important;height:36px !important;margin-left:-18px !important;margin-top:-18px !important}
 
 /* camera joystick (rectangular) on the left side, below header to avoid Back overlap */
 	.joystick-camera{position:absolute;left:12px;top:calc(env(safe-area-inset-top, 12px) + 56px);pointer-events:auto;display:flex;flex-direction:column;align-items:center;z-index:110}
