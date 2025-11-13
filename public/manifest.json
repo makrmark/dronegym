@@ -1,6 +1,6 @@
 {
-  "name": "DroneSim",
-  "short_name": "DroneSim",
+  "name": "DroneGym",
+  "short_name": "DroneGym",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#071027",
