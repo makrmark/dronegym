@@ -1,4 +1,4 @@
-# DroneSim — Next.js + Three.js Mini Simulator
+# DroneGym — Next.js + Three.js Mini Simulator
 
 This is a small, static-exportable Next.js app that demonstrates a simple drone simulator with two on-screen joysticks.
 

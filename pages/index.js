@@ -3,7 +3,7 @@ import Link from 'next/link'
 export default function Home() {
   return (
     <div className="page center">
-      <h1>DroneSim</h1>
+      <h1>DroneGym</h1>
       <p>Select a mission to fly</p>
 
       <div className="mission-list">
